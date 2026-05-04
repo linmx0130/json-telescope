@@ -26,6 +26,7 @@ pub struct TreeState {
     pub expanded_paths: HashSet<Vec<PathSegment>>,
     pub selected: usize,
     pub scroll_offset: usize,
+    pub wrap: bool,
 }
 
 impl TreeState {
@@ -37,6 +38,7 @@ impl TreeState {
             expanded_paths: expanded,
             selected: 0,
             scroll_offset: 0,
+            wrap: false,
         }
     }
 
@@ -140,5 +142,9 @@ impl TreeState {
         } else if self.selected >= visible_len {
             self.selected = visible_len - 1;
         }
+    }
+
+    pub fn toggle_wrap(&mut self) {
+        self.wrap = !self.wrap;
     }
 }

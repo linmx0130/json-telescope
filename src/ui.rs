@@ -2,7 +2,7 @@ use ratatui::{
     layout::{Constraint, Direction, Layout, Rect},
     style::{Color, Modifier, Style},
     text::{Line, Span},
-    widgets::{Block, Borders, List, ListItem, Paragraph},
+    widgets::{Block, Borders, List, ListItem, Paragraph, Wrap},
     Frame,
 };
 
@@ -105,12 +105,13 @@ fn draw_inspect(frame: &mut Frame, tree: &mut TreeState, area: Rect) {
 
     let paragraph = Paragraph::new(lines)
         .block(Block::default().title(" Inspect Entry ").borders(Borders::ALL))
-        .scroll((tree.scroll_offset as u16, 0));
+        .scroll((tree.scroll_offset as u16, 0))
+        .wrap(if tree.wrap { Wrap { trim: true } } else { Wrap::default() });
 
     frame.render_widget(paragraph, content_area);
 
     let help = Paragraph::new(
-        "↑/↓ or k/j: scroll | Enter/→/l: expand | ←/h: collapse | q/Esc: back",
+        "↑/↓ or k/j: scroll | Enter/→/l: expand | ←/h: collapse | w: toggle wrap | q/Esc: back",
     )
     .style(Style::default().fg(Color::DarkGray));
     frame.render_widget(help, help_area);

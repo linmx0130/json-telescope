@@ -76,6 +76,7 @@ fn handle_inspect_key(tree: &mut TreeState, key: KeyEvent) -> bool {
         KeyCode::Down | KeyCode::Char('j') => tree.down(visible.len()),
         KeyCode::Enter | KeyCode::Right | KeyCode::Char('l') => tree.expand(&visible),
         KeyCode::Left | KeyCode::Char('h') => tree.collapse(&visible),
+        KeyCode::Char('w') => tree.toggle_wrap(),
         _ => {}
     }
     false
