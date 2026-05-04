@@ -13,4 +13,4 @@ cargo run -- data/sample.jsonl
 ```
 
 ## Authors
-Built by [Kimi Code](github.com/MoonshotAI/kimi-cli/) led by Mengxiao Lin.
+Built by [Kimi Code](https://github.com/MoonshotAI/kimi-cli/) led by Mengxiao Lin.
